@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- <script type="text/javascript" src="semanticUI/js/semantic.min.js"/> -->
-<link rel="stylesheet" th:href="@{/semanticUI/css/semantic.min.css}">
+<link rel="stylesheet" th:href="@{/semanticUI/semantic.min.css}">
 <title>Title</title>
 </head>
 <body>
@@ -19,7 +19,9 @@
 		</thead>
 		<tbody>
 			<tr th:each="customer : ${customers}">
-				<td th:text="${customer.name}"></td>
+				<td>
+					<a th:text="${customer.name}" th:href="@{/customer/{id}(id=${customer.id})}"></a>
+				</td>
 				<td th:text="${customer.age}"></td>
 				<td th:text="${customer.level}"></td>
 				<td class="center aligned">
@@ -28,6 +30,6 @@
 			</tr>
 		</tbody>
 	</table>
-	
+	<button class="ui blue button">Button</button>
 </body>
 </html>

@@ -30,6 +30,10 @@ public class CustomerRepository {
 		return new ArrayList<>(store.values());
 	}
 	
+	public Customer getCustomer(Long id) {
+		return store.get(id);
+	}
+	
 	public Customer edit(Customer customer) {
 		
 		return customer;

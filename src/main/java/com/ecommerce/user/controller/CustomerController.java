@@ -8,14 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ecommerce.user.customer.domain.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
 import com.ecommerce.user.customer.service.CustomerService;
 import com.ecommerce.user.domain.Level;
 
+import lombok.extern.slf4j.Slf4j;
+
 //@RequiredArgsConstructor
+@Slf4j
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
@@ -42,5 +47,14 @@ public class CustomerController {
 		List<Customer> customers = customerService.findAll();
 		model.addAttribute("customers", customers);
 		return "/customer/list";
+	}
+	
+	@GetMapping("/{id}")
+	@ResponseBody
+	public String customer(@PathVariable Long id, Model model) {
+		Customer customer = customerService.findById(id);
+		model.addAttribute("customer", customer);
+		
+		return customer.toString();
 	}
 }
