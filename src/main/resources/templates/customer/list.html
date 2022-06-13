@@ -7,29 +7,32 @@
 <title>Title</title>
 </head>
 <body>
-
-	<table class="ui celled striped table">
-		<thead>
-			<tr>
-				<th class="center aligned">Name</th>
-				<th class="center aligned">Age</th>
-				<th class="center aligned">Level</th>
-				<th class="center aligned">Active</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="customer : ${customers}">
-				<td>
-					<a th:text="${customer.name}" th:href="@{/customer/{id}(id=${customer.id})}"></a>
-				</td>
-				<td th:text="${customer.age}"></td>
-				<td th:text="${customer.level}"></td>
-				<td class="center aligned">
-					<i th:if="${customer.active == true}" class="large green checkmark icon"></i>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<button class="ui blue button">Button</button>
+	<div>
+		<button class="ui blue button" th:onclick="location.href='/'">to index page</button>
+	</div>
+	<div style="width:400px; position: absolute; top: 50%; left: 50%; margin: -150px 0px 0px -200px;">
+		<table class="ui celled striped table">
+			<thead>
+				<tr>
+					<th class="center aligned">Name</th>
+					<th class="center aligned">Age</th>
+					<th class="center aligned">Level</th>
+					<th class="center aligned">Active</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer : ${customers}">
+					<td>
+						<a th:text="${customer.name}" th:href="@{/customer/{id}(id=${customer.id})}"></a>
+					</td>
+					<td th:text="${customer.age}"></td>
+					<td th:text="${customer.level}"></td>
+					<td class="center aligned">
+						<i th:if="${customer.active == true}" class="large green checkmark icon"></i>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
