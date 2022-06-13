@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- <script type="text/javascript" src="semanticUI/js/semantic.min.js"/> -->
+<link rel="stylesheet" th:href="@{/semanticUI/css/semantic.min.css}">
+<title>Title</title>
+</head>
+<body>
+
+	<table class="ui celled striped table">
+		<thead>
+			<tr>
+				<th class="center aligned">Name</th>
+				<th class="center aligned">Age</th>
+				<th class="center aligned">Level</th>
+				<th class="center aligned">Active</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="customer : ${customers}">
+				<td th:text="${customer.name}"></td>
+				<td th:text="${customer.age}"></td>
+				<td th:text="${customer.level}"></td>
+				<td class="center aligned">
+					<i th:if="${customer.active == true}" class="large green checkmark icon"></i>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</body>
+</html>

@@ -3,6 +3,11 @@ package com.ecommerce.user.domain;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 사용자(고객, 직원) 등급별 코드 목록
+ * @author Ikjoo Lee
+ *
+ */
 @Slf4j
 @Getter
 public enum Level {
@@ -53,10 +58,8 @@ public enum Level {
 		return this.code;
 	}
 	
-	private boolean isApplicable(String target) {
-		if(this.candidate.trim().toLowerCase().contains(target)) {
-			return true;
-		}else {
+	private void isApplicable(String target) {
+		if(!this.candidate.trim().toLowerCase().contains(target)) {
 			throw new IllegalArgumentException("해당코드는" + target + "에 적용할 수 없는 코드 입니다.");
 		}
 	}
