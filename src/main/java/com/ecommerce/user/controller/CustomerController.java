@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 import com.ecommerce.user.customer.domain.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
@@ -36,8 +38,8 @@ public class CustomerController {
 	
 	@PostConstruct
 	public void init() {
-		Customer customerA = new Customer("customerA", 23, 'M', true, "01011112222", null, null, null, Level.ONE);
-		Customer customerB = new Customer("customerB", 36, 'F', false, "01033334444", null, null, null, Level.TWO);
+		Customer customerA = new Customer("customerA", 23, 'M', true, "01011112222", null, "customerA@test.com", null, Level.ONE);
+		Customer customerB = new Customer("customerB", 36, 'F', false, "01033334444", null, "customerB@test.com", null, Level.TWO);
 		customerRepository.save(customerA);
 		customerRepository.save(customerB);
 	}
@@ -46,15 +48,42 @@ public class CustomerController {
 	public String customerList(Model model) {
 		List<Customer> customers = customerService.findAll();
 		model.addAttribute("customers", customers);
+		
 		return "/customer/list";
 	}
 	
 	@GetMapping("/{id}")
-	@ResponseBody
-	public String customer(@PathVariable Long id, Model model) {
+	public String getCustomer(@PathVariable Long id, Model model) {
 		Customer customer = customerService.findById(id);
+		customer.setEditFalse();
 		model.addAttribute("customer", customer);
 		
-		return customer.toString();
+		return "customer/view";
+	}
+	
+	@PostMapping("/{id}")
+	public String postCustomer(@PathVariable Long id, Model model) {
+		Customer customer = new Customer("postCustomer", 20, 'M', true, null, null, null, null, Level.FIVE);
+		model.addAttribute("customer", customer);
+		
+		return ThymeleafViewResolver.REDIRECT_URL_PREFIX + "/customer/{id}";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String getEdit(@PathVariable Long id, Model model) {
+		Customer customer = customerRepository.getCustomer(id);
+		customer.setEditTrue();
+		model.addAttribute("customer", customer);
+		
+		return "/customer/view";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String postEdit(@PathVariable Long id, @ModelAttribute Customer customer, Model model) {
+		log.info("##### customer #### : {}", customer);
+		customer = customerRepository.edit(customer);
+		model.addAttribute("customer", customer);
+		
+		return ThymeleafViewResolver.REDIRECT_URL_PREFIX + "/customer/{id}";
 	}
 }

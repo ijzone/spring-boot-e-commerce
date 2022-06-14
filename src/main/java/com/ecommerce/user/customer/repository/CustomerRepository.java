@@ -35,7 +35,7 @@ public class CustomerRepository {
 	}
 	
 	public Customer edit(Customer customer) {
-		
+		store.put(customer.getId(), customer);
 		return customer;
 	}
 }

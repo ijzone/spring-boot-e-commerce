@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<!--/* View */-->
+	<div th:if="${customer.edit == false}">
+		<div>
+			<span>ID: </span><input th:field="${customer.id}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
+		</div>
+		<div>
+			<span>Name: </span><input th:field="${customer.name}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
+		</div>
+		<div>
+			<span>Age: </span><input th:field="${customer.age}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
+		</div>
+		<div>
+			<span>Cellphone: </span><input th:field="${customer.cellphone}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
+		</div>
+		<div>
+			<span>Email: </span><input th:field="${customer.email}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
+		</div>
+		<div>
+			<button th:type="button" th:onclick="|location.href='@{/customer/edit/{id}(id=${customer.id})}'|">Edit</button>
+		</div>
+	</div>
+	
+	<!--/* Edit */-->
+	<div th:unless="${customer.edit == false}">
+		<form th:action="@{/customer/edit/{id}(id=*{id})}" th:object="${customer}" method="post">
+			<div>
+				<span>ID: </span><input th:field="*{id}">
+			</div>
+			<div>
+				<span>Name: </span><input th:field="*{name}">
+			</div>
+			<div>
+				<span>Age: </span><input th:field="*{age}">
+			</div>
+			<div>
+				<span>Cellphone: </span><input th:field="*{cellphone}">
+			</div>
+			<div>
+				<span>Email: </span><input th:field="*{email}">
+			</div>
+			<div>
+				<button th:type="submit">Submit</button>
+			</div>
+			<input th:type="hidden" th:field="*{active}">
+		</form>
+	</div>
+	
+	
+</body>
+</html>

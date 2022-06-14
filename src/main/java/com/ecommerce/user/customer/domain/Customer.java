@@ -16,6 +16,7 @@ public class Customer extends User {
 	private String email;
 	private String password;
 	private Level level;
+	private boolean edit;
 	
 	public Customer(String name
 				  , Integer age
@@ -33,8 +34,17 @@ public class Customer extends User {
 		this.email = email;
 		this.password = password;
 		this.level = level;
+		this.edit = false;
 	}
 
+	public void setEditTrue() {
+		this.edit = true;
+	}
+	
+	public void setEditFalse() {
+		this.edit = false;
+	}
+	
 	@Override
 	public String toString() {
 		return "Customer [cellphone=" + cellphone + ", tel=" + tel + ", email=" + email + ", password=" + password
