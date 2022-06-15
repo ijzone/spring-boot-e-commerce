@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### tailwindcss ###
+src/main/resources/static/tailwindcss/node_modules/

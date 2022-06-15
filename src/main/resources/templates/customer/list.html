@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <!-- <script type="text/javascript" src="semanticUI/js/semantic.min.js"/> -->
 <link rel="stylesheet" th:href="@{/semanticUI/semantic.min.css}">
+<link rel="stylesheet" th:href="@{/tailwindcss/dist/output.css}">
 <title>Title</title>
 </head>
 <body>
 	<div>
-		<button class="ui blue button" th:onclick="location.href='/'">to index page</button>
+		<button class="ui blue button" th:onclick="location.href='/'">index</button>
 	</div>
 	<div style="width:400px; position: absolute; top: 50%; left: 50%; margin: -150px 0px 0px -200px;">
 		<table class="ui celled striped table">
@@ -28,7 +29,9 @@
 					<td th:text="${customer.age}"></td>
 					<td th:text="${customer.level}"></td>
 					<td class="center aligned">
-						<i th:if="${customer.active == true}" class="large green checkmark icon"></i>
+						<!-- <i th:if="${customer.active == true}" class="large green checkmark icon"></i> -->
+						<svg th:if="${customer.active == true}" xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 stroke-2 text-green-600 ml-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    					<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
 					</td>
 				</tr>
 			</tbody>

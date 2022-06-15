@@ -2,54 +2,198 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/tailwindcss/dist/output.css}">
 <title>Title</title>
 </head>
 <body>
 	<!--/* View */-->
-	<div th:if="${customer.edit == false}">
-		<div>
-			<span>ID: </span><input th:field="${customer.id}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
-		</div>
-		<div>
-			<span>Name: </span><input th:field="${customer.name}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
-		</div>
-		<div>
-			<span>Age: </span><input th:field="${customer.age}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
-		</div>
-		<div>
-			<span>Cellphone: </span><input th:field="${customer.cellphone}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
-		</div>
-		<div>
-			<span>Email: </span><input th:field="${customer.email}" th:disabled="${customer.edit eq false ? 'disabled' : false}">
-		</div>
-		<div>
-			<button th:type="button" th:onclick="|location.href='@{/customer/edit/{id}(id=${customer.id})}'|">Edit</button>
+	<div th:if="${customer.edit == false}" class="antialiased text-gray-900 px-6">
+		<div class="max-w-xl mx-auto py-12 divide-y md:max-w-xl">
+			<div class="py-12">
+				<h2 class="text-2xl font-bold">Customer Detail</h2>
+				<div class="mt-8 max-w-md">
+					<div class="grid grid-cols-1 gap-6">
+						<label class="block">
+				        	<span class="text-gray-700">ID</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.id}" 
+				                    th:disabled="disabled"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Level</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.level.label}" 
+				                    th:disabled="disabled"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Name</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.name}" 
+				                    th:disabled="${customer.edit eq false ? 'disabled' : false}"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Age</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.age}" 
+				                    th:disabled="${customer.edit eq false ? 'disabled' : false}"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Cellphone</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.cellphone}" 
+				                    th:disabled="${customer.edit eq false ? 'disabled' : false}"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Email</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="${customer.email}" 
+				                    th:disabled="${customer.edit eq false ? 'disabled' : false}"
+							/>
+						</label>
+						<button class="bg-cyan-600 hover:bg-cyan-700 text-white rounded-md px-3 py-1" 
+								th:type="button" 
+								th:onclick="|location.href='@{/customer/edit/{id}(id=${customer.id})}'|">Edit</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
 	<!--/* Edit */-->
-	<div th:unless="${customer.edit == false}">
-		<form th:action="@{/customer/edit/{id}(id=*{id})}" th:object="${customer}" method="post">
-			<div>
-				<span>ID: </span><input th:field="*{id}">
+	<div th:unless="${customer.edit == false}" class="antialiased text-gray-900 px-6">
+		<div class="max-w-xl mx-auto py-12 divide-y md:max-w-xl">
+			<div class="py-12">
+				<h2 class="text-2xl font-bold">Customer Edit</h2>
+				<div class="mt-8 max-w-md">
+					<form th:action="@{/customer/edit/{id}(id=*{id})}" th:object="${customer}" method="post">
+					<div class="grid grid-cols-1 gap-6">
+						<label class="block">
+				        	<span class="text-gray-700">ID</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{id}" 
+				                    th:disabled="disabled"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Level</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{level.label}" 
+				                    th:disabled="disabled"
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Name</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{name}" 
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Age</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{age}" 
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Cellphone</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{cellphone}" 
+							/>
+						</label>
+						<label class="block">
+				        	<span class="text-gray-700">Email</span>
+							<input th:type="text"
+				                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+										  focus:border-indigo-300 
+										  focus:ring 
+										  focus:ring-indigo-200 
+										  focus:ring-opacity-50"
+				                    placeholder=""
+				                    th:field="*{email}" 
+							/>
+						</label>
+						
+						<button class="bg-cyan-600 hover:bg-cyan-700 text-white rounded-md px-3 py-1" 
+								th:type="submit">Submit</button>
+						<input th:type="hidden" th:field="*{gender}">
+						<input th:type="hidden" th:field="*{active}">
+						<input th:type="hidden" th:field="*{tel}">
+						<input th:type="hidden" th:field="*{level}">
+					</div>
+					</form>
+				</div>
 			</div>
-			<div>
-				<span>Name: </span><input th:field="*{name}">
-			</div>
-			<div>
-				<span>Age: </span><input th:field="*{age}">
-			</div>
-			<div>
-				<span>Cellphone: </span><input th:field="*{cellphone}">
-			</div>
-			<div>
-				<span>Email: </span><input th:field="*{email}">
-			</div>
-			<div>
-				<button th:type="submit">Submit</button>
-			</div>
-			<input th:type="hidden" th:field="*{active}">
-		</form>
+		</div>
 	</div>
 	
 	
