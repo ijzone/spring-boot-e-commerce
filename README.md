@@ -95,3 +95,5 @@ Add your compiled CSS file to the `<head>` and start using Tailwind’s utility 
    ```
 #### Flowbite - Tailwind CSS component library
 > https://flowbite.com/docs/getting-started/introduction/
+#### SVG icons
+> https://heroicons.com/
