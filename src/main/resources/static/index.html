@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{/semanticUI/semantic.min.css}">
-<link rel="stylesheet" th:href="@{/tailwindcss/dist/output.css}">
+<!-- <link rel="stylesheet" href="/semanticUI/semantic.min.css"> -->
+<link rel="stylesheet" href="/tailwindcss/dist/output.css">
 <title>Index</title>
 </head>
 <body>
-	<h1 class="ui header">Customer</h1>
-	<button class="ui blue button" onclick="location.href='/customer';">Customer List</button>
+	<div class="ml-5 max-w-md">
+		<h1 class="text-4xl font-bold my-5 text-center">Customer</h1>
+		<button class="bg-cyan-600 hover:bg-cyan-700 text-white rounded-md px-3 py-1 w-full" 
+				type="button" 
+				onclick="location.href='/customer'">List</button>
+	</div>
 </body>
 </html>
