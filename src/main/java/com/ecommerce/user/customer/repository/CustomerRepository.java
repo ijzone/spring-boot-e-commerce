@@ -38,4 +38,12 @@ public class CustomerRepository {
 		store.put(customer.getId(), customer);
 		return customer;
 	}
+	
+	public void delete(Customer customer) {
+		store.remove(customer.getId());
+	}
+	
+	public void deleteAll() {
+		store.clear();
+	}
 }

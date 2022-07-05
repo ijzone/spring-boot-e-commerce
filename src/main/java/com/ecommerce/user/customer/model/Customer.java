@@ -1,6 +1,6 @@
 package com.ecommerce.user.customer.model;
 
-import com.ecommerce.user.domain.Level;
+import com.ecommerce.user.Level;
 import com.ecommerce.user.model.User;
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.ecommerce.user.domain;
+package com.ecommerce.user;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

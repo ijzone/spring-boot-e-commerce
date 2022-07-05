@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.ecommerce.user.Level;
+
 class LevelTest {
 
 	@Test
