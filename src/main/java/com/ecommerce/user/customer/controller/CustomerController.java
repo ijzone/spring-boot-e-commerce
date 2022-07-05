@@ -1,4 +1,4 @@
-package com.ecommerce.user.controller;
+package com.ecommerce.user.customer.controller;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-import com.ecommerce.user.customer.domain.Customer;
+import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
 import com.ecommerce.user.customer.service.CustomerService;
 import com.ecommerce.user.domain.Level;
@@ -80,7 +80,6 @@ public class CustomerController {
 	
 	@PostMapping("/edit/{id}")
 	public String postEdit(@PathVariable Long id, @ModelAttribute Customer customer, Model model) {
-		log.info("##### customer #### : {}", customer);
 		customer = customerRepository.edit(customer);
 		model.addAttribute("customer", customer);
 		

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ecommerce.user.customer.domain.Customer;
+import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
 
 @Service

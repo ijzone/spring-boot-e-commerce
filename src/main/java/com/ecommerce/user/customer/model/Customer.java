@@ -1,7 +1,7 @@
-package com.ecommerce.user.customer.domain;
+package com.ecommerce.user.customer.model;
 
 import com.ecommerce.user.domain.Level;
-import com.ecommerce.user.domain.User;
+import com.ecommerce.user.model.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -49,6 +49,26 @@ public class Customer extends User {
 	public String toString() {
 		return "Customer [cellphone=" + cellphone + ", tel=" + tel + ", email=" + email + ", password=" + password
 				+ ", level=" + level + "]";
+	}
+
+	@Override
+	public Integer getAge() {
+		return super.getAge();
+	}
+
+	@Override
+	public Character getGender() {
+		return super.getGender();
+	}
+
+	@Override
+	public String getName() {
+		return super.getName();
+	}
+
+	@Override
+	public boolean isActive() {
+		return super.isActive();
 	}
 
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.ecommerce.user.customer.domain.Customer;
+import com.ecommerce.user.customer.model.Customer;
 
 import lombok.extern.slf4j.Slf4j;
 
