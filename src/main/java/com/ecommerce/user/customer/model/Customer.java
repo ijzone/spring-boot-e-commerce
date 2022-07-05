@@ -1,6 +1,6 @@
 package com.ecommerce.user.customer.model;
 
-import com.ecommerce.user.Level;
+import com.ecommerce.user.UserLevel;
 import com.ecommerce.user.model.User;
 
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class Customer extends User {
 	private String tel;
 	private String email;
 	private String password;
-	private Level level;
+	private UserLevel level;
 	private boolean edit;
 	
 	public Customer(String name
@@ -26,7 +26,7 @@ public class Customer extends User {
 				  , String tel
 				  , String email
 				  , String password
-				  , Level level) {
+				  , UserLevel level) {
 		
 		super(name, age, gender, active);
 		this.cellphone = cellphone;

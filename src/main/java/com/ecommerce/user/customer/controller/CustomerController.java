@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
-import com.ecommerce.user.Level;
+import com.ecommerce.user.UserLevel;
 import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
 import com.ecommerce.user.customer.service.CustomerService;
@@ -38,8 +38,8 @@ public class CustomerController {
 	
 	@PostConstruct
 	public void init() {
-		Customer customerA = new Customer("customerA", 23, 'M', true, "01011112222", null, "customerA@test.com", null, Level.ONE);
-		Customer customerB = new Customer("customerB", 36, 'F', false, "01033334444", null, "customerB@test.com", null, Level.TWO);
+		Customer customerA = new Customer("customerA", 23, 'M', true, "01011112222", null, "customerA@test.com", null, UserLevel.ONE);
+		Customer customerB = new Customer("customerB", 36, 'F', false, "01033334444", null, "customerB@test.com", null, UserLevel.TWO);
 		customerRepository.save(customerA);
 		customerRepository.save(customerB);
 	}
@@ -63,7 +63,7 @@ public class CustomerController {
 	
 	@PostMapping("/{id}")
 	public String postCustomer(@PathVariable Long id, Model model) {
-		Customer customer = new Customer("postCustomer", 20, 'M', true, null, null, null, null, Level.FIVE);
+		Customer customer = new Customer("postCustomer", 20, 'M', true, null, null, null, null, UserLevel.FIVE);
 		model.addAttribute("customer", customer);
 		
 		return ThymeleafViewResolver.REDIRECT_URL_PREFIX + "/customer/{id}";
