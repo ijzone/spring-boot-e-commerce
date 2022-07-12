@@ -15,15 +15,15 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 public enum UserLevel {
 	
-	  CUSTOMER("customer", "001", "customer", "customer")
-	, EMPLOYEE("employee", "002", "employee", "employee")
-	, ONE("1", "01", "one", "customer, employee")
-	, TWO("2", "02", "two", "customer, employee")
-	, THREE("3", "03", "customer", "three")
-	, FOUR("4", "04", "four", "customer, employee")
-	, FIVE("5", "05", "five", "customer, employee")
-	, CUSTOMER_ONLY("-1", "-1", "customer", "CUSTOMER_ONLY")
-	, EMPLOYEE_ONLY("-2", "-2", "employee", "EMPLOYEE_ONLY")
+	  CUSTOMER("customer", "C001", "customer", "customer")
+	, CUSTOMER_ONLY("customer only", "C002", "CUSTOMER_ONLY", "customer")
+	, EMPLOYEE("employee", "E001", "employee", "employee")
+	, EMPLOYEE_ONLY("employee only", "E002", "EMPLOYEE_ONLY", "employee")
+	, ONE("1", "001", "one", "customer, employee")
+	, TWO("2", "002", "two", "customer, employee")
+	, THREE("3", "003", "three", "customer, employee")
+	, FOUR("4", "004", "four", "customer, employee")
+	, FIVE("5", "005", "five", "customer, employee")
 	;
 	
 //	public static EnumSet<Level> customer = EnumSet.of(CUSTOMER_A, CUSTOMER_B);
@@ -31,34 +31,34 @@ public enum UserLevel {
 	
 	private String label;
 	private String code;
-	private String candidate;
 	private String description;
+	private String candidate;
 	
-	UserLevel(String label, String code, String candidate, String description) {
+	UserLevel(String label, String code, String description, String candidate) {
 		this.label = label;
 		this.code = code;
-		this.candidate = candidate;
 		this.description = description;
+		this.candidate = candidate;
 	}
 	
 	
 	public String getCustomerLabel() {
-		this.isApplicable(CUSTOMER.getLabel());
+		this.isApplicable(CUSTOMER.getCandidate());
 		return this.label;
 	}
 	
 	public String getCustomerCode() {
-		this.isApplicable(CUSTOMER.getLabel());
+		this.isApplicable(CUSTOMER.getCandidate());
 		return this.code;
 	}
 	
 	public String getEmployeeLabel() {
-		this.isApplicable(EMPLOYEE.getLabel());
+		this.isApplicable(EMPLOYEE.getCandidate());
 		return this.label;
 	}
 	
 	public String getEmployeeCode() {
-		this.isApplicable(EMPLOYEE.getLabel());
+		this.isApplicable(EMPLOYEE.getCandidate());
 		return this.code;
 	}
 	
