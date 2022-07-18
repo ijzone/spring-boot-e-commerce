@@ -19,10 +19,7 @@ import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
 import com.ecommerce.user.customer.service.CustomerService;
 
-import lombok.extern.slf4j.Slf4j;
-
 //@RequiredArgsConstructor
-@Slf4j
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {

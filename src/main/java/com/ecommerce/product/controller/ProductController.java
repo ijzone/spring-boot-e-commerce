@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ecommerce.product.repository.ProductRepository;
 import com.ecommerce.product.service.ProductService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Controller
 @RequestMapping("/product")
 public class ProductController {
