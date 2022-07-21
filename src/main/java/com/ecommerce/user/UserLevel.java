@@ -17,13 +17,13 @@ public enum UserLevel {
 	
 	  CUSTOMER("customer", "C001", "customer", "customer")
 	, CUSTOMER_ONLY("customer only", "C002", "CUSTOMER_ONLY", "customer")
-	, EMPLOYEE("employee", "E001", "employee", "employee")
-	, EMPLOYEE_ONLY("employee only", "E002", "EMPLOYEE_ONLY", "employee")
-	, ONE("1", "001", "one", "customer, employee")
-	, TWO("2", "002", "two", "customer, employee")
-	, THREE("3", "003", "three", "customer, employee")
-	, FOUR("4", "004", "four", "customer, employee")
-	, FIVE("5", "005", "five", "customer, employee")
+	, ADMIN("admin", "E001", "admin", "admin")
+	, ADMIN_ONLY("admin only", "E002", "ADMIN_ONLY", "admin")
+	, ONE("1", "001", "one", "customer, admin")
+	, TWO("2", "002", "two", "customer, admin")
+	, THREE("3", "003", "three", "customer, admin")
+	, FOUR("4", "004", "four", "customer, admin")
+	, FIVE("5", "005", "five", "customer, admin")
 	;
 	
 //	public static EnumSet<Level> customer = EnumSet.of(CUSTOMER_A, CUSTOMER_B);
@@ -52,13 +52,13 @@ public enum UserLevel {
 		return this.code;
 	}
 	
-	public String getEmployeeLabel() {
-		this.isApplicable(EMPLOYEE.getCandidate());
+	public String getAdminLabel() {
+		this.isApplicable(ADMIN.getCandidate());
 		return this.label;
 	}
 	
-	public String getEmployeeCode() {
-		this.isApplicable(EMPLOYEE.getCandidate());
+	public String getAdminCode() {
+		this.isApplicable(ADMIN.getCandidate());
 		return this.code;
 	}
 	
@@ -69,9 +69,9 @@ public enum UserLevel {
 	}
 	
 	public void printInfo() {
-		log.info("label: {}", this.label);
-		log.info("code: {}", this.code);
-		log.info("description: {}", this.description);
-		log.info("candidate: {}", this.candidate);
+		log.info("UserLevel label: {}", this.label);
+		log.info("UserLevel code: {}", this.code);
+		log.info("UserLevel description: {}", this.description);
+		log.info("UserLevel candidate: {}", this.candidate);
 	}
 }

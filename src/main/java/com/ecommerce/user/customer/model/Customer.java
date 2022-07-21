@@ -11,44 +11,18 @@ public class Customer extends User {
 
 	@Setter
 	private Long id;
-	private String cellphone;
-	private String tel;
-	private String email;
-	private String password;
-	private UserLevel level;
-	private boolean edit;
 	
 	public Customer(String name
 				  , Integer age
 				  , Character gender
-				  , boolean active
 				  , String cellphone
 				  , String tel
 				  , String email
 				  , String password
-				  , UserLevel level) {
-		
-		super(name, age, gender, active);
-		this.cellphone = cellphone;
-		this.tel = tel;
-		this.email = email;
-		this.password = password;
-		this.level = level;
-		this.edit = false;
-	}
-
-	public void setEditTrue() {
-		this.edit = true;
-	}
-	
-	public void setEditFalse() {
-		this.edit = false;
-	}
-	
-	@Override
-	public String toString() {
-		return "Customer [cellphone=" + cellphone + ", tel=" + tel + ", email=" + email + ", password=" + password
-				+ ", level=" + level + "]";
+				  , UserLevel level
+				  , boolean active
+				  , boolean edit) {
+		super(name, age, gender, cellphone, tel, email, password, level, active, edit);
 	}
 
 	@Override
@@ -57,8 +31,23 @@ public class Customer extends User {
 	}
 
 	@Override
+	public String getCellphone() {
+		return super.getCellphone();
+	}
+
+	@Override
+	public String getEmail() {
+		return super.getEmail();
+	}
+
+	@Override
 	public Character getGender() {
 		return super.getGender();
+	}
+
+	@Override
+	public UserLevel getLevel() {
+		return super.getLevel();
 	}
 
 	@Override
@@ -67,8 +56,43 @@ public class Customer extends User {
 	}
 
 	@Override
+	public String getPassword() {
+		return super.getPassword();
+	}
+
+	@Override
+	public String getTel() {
+		return super.getTel();
+	}
+
+	@Override
 	public boolean isActive() {
 		return super.isActive();
 	}
 
+	@Override
+	public boolean isEdit() {
+		return super.isEdit();
+	}
+
+	@Override
+	public void setActiveTrue() {
+		super.setActiveTrue();
+	}
+
+	@Override
+	public void setActiveFalse() {
+		super.setActiveFalse();
+	}
+
+	@Override
+	public void setEditTrue() {
+		super.setEditTrue();
+	}
+
+	@Override
+	public void setEditFalse() {
+		super.setEditFalse();
+	}
+	
 }

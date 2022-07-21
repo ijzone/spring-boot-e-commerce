@@ -1,7 +1,5 @@
 package com.ecommerce.product.model;
 
-import java.math.BigDecimal;
-
 import com.ecommerce.product.ProductType;
 
 import lombok.Getter;
@@ -12,8 +10,9 @@ public class Product {
 
 	@Setter
 	private Long id;
+	
 	private String name;
-	private BigDecimal price;
-	private Integer quantity;
+	private Long price;
+	private int quantity;
 	private ProductType productType;
 }
