@@ -12,17 +12,22 @@ public class Customer extends User {
 	@Setter
 	private Long id;
 	
-	public Customer(String name
+	public Customer(String firstName
+				  , String lastName
 				  , Integer age
 				  , Character gender
 				  , String cellphone
 				  , String tel
 				  , String email
+				  , String street
+				  , String city
+				  , String zip
 				  , String password
 				  , UserLevel level
-				  , boolean active
-				  , boolean edit) {
-		super(name, age, gender, cellphone, tel, email, password, level, active, edit);
+				  , boolean active,
+			boolean edit) {
+		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active,
+				edit);
 	}
 
 	@Override
@@ -36,8 +41,18 @@ public class Customer extends User {
 	}
 
 	@Override
+	public String getCity() {
+		return super.getCity();
+	}
+
+	@Override
 	public String getEmail() {
 		return super.getEmail();
+	}
+
+	@Override
+	public String getFirstName() {
+		return super.getFirstName();
 	}
 
 	@Override
@@ -46,13 +61,13 @@ public class Customer extends User {
 	}
 
 	@Override
-	public UserLevel getLevel() {
-		return super.getLevel();
+	public String getLastName() {
+		return super.getLastName();
 	}
 
 	@Override
-	public String getName() {
-		return super.getName();
+	public UserLevel getLevel() {
+		return super.getLevel();
 	}
 
 	@Override
@@ -61,8 +76,18 @@ public class Customer extends User {
 	}
 
 	@Override
+	public String getStreet() {
+		return super.getStreet();
+	}
+
+	@Override
 	public String getTel() {
 		return super.getTel();
+	}
+
+	@Override
+	public String getZip() {
+		return super.getZip();
 	}
 
 	@Override

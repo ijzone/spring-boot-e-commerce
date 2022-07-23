@@ -35,8 +35,8 @@ public class CustomerController {
 	
 	@PostConstruct
 	public void init() {
-		Customer customerA = new Customer("initA", 23, 'M', "01011112222", null, "initA@test.com", null, UserLevel.ONE, true, false);
-		Customer customerB = new Customer("initB", 36, 'F', "01033334444", null, "initB@test.com", null, UserLevel.TWO, false, false);
+		Customer customerA = new Customer("initA", "lastA", 23, 'M', "01011112222", null, "initA@test.com", null, null, null, null, UserLevel.ONE, true, false);
+		Customer customerB = new Customer("initB", "lastB", 36, 'F', "01033334444", null, "initB@test.com", null, null, null, null, UserLevel.TWO, false, false);
 		customerRepository.save(customerA);
 		customerRepository.save(customerB);
 	}
@@ -60,7 +60,7 @@ public class CustomerController {
 	
 	@PostMapping("/{id}")
 	public String postCustomer(@PathVariable Long id, Model model) {
-		Customer customer = new Customer("postCustomer", 20, 'M', null, null, null, null, UserLevel.FIVE, true, false);
+		Customer customer = new Customer("postCustomer", "postLast", 20, 'M', null, null, null, null, null, null, null, UserLevel.FIVE, true, false);
 		model.addAttribute("customer", customer);
 		
 		return ThymeleafViewResolver.REDIRECT_URL_PREFIX + "/customer/{id}";
