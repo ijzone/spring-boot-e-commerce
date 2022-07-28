@@ -33,4 +33,14 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.getList();
 	}
 
+	@Override
+	public boolean activateUser() {
+		return false;
+	}
+
+	@Override
+	public boolean deactivateUser() {
+		return false;
+	}
+
 }

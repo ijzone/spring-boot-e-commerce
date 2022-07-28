@@ -24,8 +24,8 @@ public class Customer extends User {
 				  , String zip
 				  , String password
 				  , UserLevel level
-				  , boolean active,
-			boolean edit) {
+				  , boolean active
+				  , boolean edit) {
 		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active,
 				edit);
 	}

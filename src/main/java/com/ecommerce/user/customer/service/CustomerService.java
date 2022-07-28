@@ -11,4 +11,8 @@ public interface CustomerService {
 	Customer findByName(String name);
 	
 	List<Customer> findAll();
+	
+	boolean activateUser();
+	
+	boolean deactivateUser();
 }
