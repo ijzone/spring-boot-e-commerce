@@ -1,6 +1,5 @@
 package com.ecommerce.user.admin.model;
 
-import com.ecommerce.user.UserLevel;
 import com.ecommerce.user.model.User;
 
 import lombok.Getter;
@@ -12,20 +11,20 @@ public class Admin extends User {
 	@Setter
 	private Long id;
 	
-	public Admin(String firstName
-			   , String lastName
-			   , Integer age
-			   , Character gender
-			   , String cellphone
-			   , String tel
-			   , String email
-			   , String street
-			   , String city
-			   , String zip
-			   , String password
-			   , UserLevel level
-			   , boolean active
-			   , boolean edit) {
+	public Admin(String firstName, 
+				 String lastName, 
+				 Integer age, 
+				 Character gender, 
+				 String cellphone, 
+				 String tel, 
+				 String email, 
+				 String street, 
+				 String city, 
+				 String zip, 
+				 String password, 
+				 User.Level level, 
+				 boolean active, 
+				 boolean edit) {
 		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active, edit);
 	}
 
@@ -65,7 +64,7 @@ public class Admin extends User {
 	}
 
 	@Override
-	public UserLevel getLevel() {
+	public User.Level getLevel() {
 		return super.getLevel();
 	}
 

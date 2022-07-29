@@ -19,7 +19,7 @@ public class ProductRepository {
 	private static Long id = 0L;
 	
 	public Product save(Product product) {
-		product.setId(++id);
+		product.setProductId(++id);
 		store.put(id, product);
 		return product;
 	}
@@ -34,12 +34,12 @@ public class ProductRepository {
 	}
 	
 	public Product edit(Product product) {
-		store.put(product.getId(), product);
+		store.put(product.getProductId(), product);
 		return product;
 	}
 	
 	public void delete(Product product) {
-		store.remove(product.getId());
+		store.remove(product.getProductId());
 	}
 	
 	public void deleteAll() {
