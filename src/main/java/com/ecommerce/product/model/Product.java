@@ -14,7 +14,7 @@ public class Product {
 	private String name;
 	private Long unitPrice;
 	private int unitQuantity;
-	private Product.Category productCategory;
+	private Product.Category category;
 	private Product.Status status;
 	
 	

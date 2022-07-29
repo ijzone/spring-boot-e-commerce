@@ -1,6 +1,7 @@
 package com.ecommerce.user.model;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,6 +19,7 @@ public class User {
 	private String city;
 	private String zip;
 	private String password;
+	@Setter
 	private User.Level level;
 	
 	private boolean active;
