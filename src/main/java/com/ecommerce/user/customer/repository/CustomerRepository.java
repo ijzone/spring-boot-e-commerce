@@ -2,8 +2,10 @@ package com.ecommerce.user.customer.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +34,18 @@ public class CustomerRepository {
 	
 	public Customer getCustomer(Long id) {
 		return store.get(id);
+	}
+	
+	public Customer getCustomerByName(String name) {
+		if(!store.isEmpty()) {
+			for(Entry<Long, Customer> customer: store.entrySet()) {
+				if(customer.getValue().getFirstName().equals(name)) {
+					return customer.getValue();
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 	public Customer edit(Customer customer) {
