@@ -33,13 +33,20 @@ public class ProductRepository {
 		return store.get(id);
 	}
 	
+	public Product getProduct(String name) {
+		return store.values().stream()
+				.filter(product -> product.getName().equals(name))
+				.findFirst()
+				.orElse(null);
+	}
+	
 	public Product edit(Product product) {
 		store.put(product.getProductId(), product);
 		return product;
 	}
 	
-	public void delete(Product product) {
-		store.remove(product.getProductId());
+	public void delete(Long id) {
+		store.remove(id);
 	}
 	
 	public void deleteAll() {

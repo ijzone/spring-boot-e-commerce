@@ -36,13 +36,19 @@ public class CustomerRepository {
 		return store.get(id);
 	}
 	
-	public Customer getCustomerByName(String name) {
+	public Customer getCustomer(String name) {
 		if(!store.isEmpty()) {
-			for(Entry<Long, Customer> customer: store.entrySet()) {
-				if(customer.getValue().getFirstName().equals(name)) {
-					return customer.getValue();
-				}
-			}
+			
+			return store.values().stream()
+					.filter(customer -> customer.getFirstName().equals(name))
+					.findFirst()
+					.orElse(null);
+			
+//			for(Entry<Long, Customer> customer: store.entrySet()) {
+//				if(customer.getValue().getFirstName().equals(name)) {
+//					return customer.getValue();
+//				}
+//			}
 		}
 		
 		return null;
