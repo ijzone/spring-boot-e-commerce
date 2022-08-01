@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.model.User;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class UserTest {
 	
 	@Test

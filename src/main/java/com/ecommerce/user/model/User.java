@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 public class User {
 
+	@Setter
+	private Long id;
+	
 	private String firstName;
 	private String lastName;
 	private Integer age;

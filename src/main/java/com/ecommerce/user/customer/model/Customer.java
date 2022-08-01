@@ -3,14 +3,10 @@ package com.ecommerce.user.customer.model;
 import com.ecommerce.user.model.User;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class Customer extends User {
 
-	@Setter
-	private Long id;
-	
 	public Customer(String firstName, 
 					String lastName, 
 					Integer age, 
@@ -25,8 +21,7 @@ public class Customer extends User {
 					User.Level level, 
 					boolean active, 
 					boolean edit) {
-		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active,
-				edit);
+		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active, edit);
 	}
 
 	@Override

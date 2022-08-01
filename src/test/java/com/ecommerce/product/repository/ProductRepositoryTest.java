@@ -1,14 +1,11 @@
 package com.ecommerce.product.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,19 +27,34 @@ class ProductRepositoryTest {
 	}
 	
 	@Test
-	void findProductTest() {
-		// given
-		String name = "productA";
+	void saveProductTest() {
+		//given
+		Product product = new Product(6L, "productF", 500L, 2, Product.Category.FASHION, Product.Status.SHIPPED);
 		
 		// when
-		Product product2 = productRepository.getProduct(2L);
+		Product savedProduct = productRepository.save(product);
+		
+		// then
+		assertThat(savedProduct.getName()).isEqualTo("productF");
+		
+		assertThat(productRepository.getList().size()).isEqualTo(6);
+	}
+	
+	@Test
+	void findProductTest() {
+		// given
+		Long id = 2L;
+		// when
+		Product product2 = productRepository.getProduct(id);
 		// then
 		assertThat(product2.getName()).isEqualTo("productB");
 		
+		// given
+		String name = "productA";
 		// when
 		Product product = productRepository.getProduct(name);
 		// then
-		assertThat(product.getName()).isEqualTo("productA");
+		assertThat(product.getName()).isEqualTo(name);
 
 		// when
 		int productSize = productRepository.getList().size();
@@ -60,7 +72,7 @@ class ProductRepositoryTest {
 		
 		// then
 		List<Product> list = productRepository.getList();
-		list.stream().forEach(product -> System.out.println(product.getName()));
+		list.stream().forEach(product -> System.out.println("Product(id: " + product.getProductId() + ") = " + product.getName()));
 		long count = list.stream().count();
 		assertThat(count).isEqualTo(4L);
 	}
