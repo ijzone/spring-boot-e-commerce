@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.user.customer.model.Customer;
-import com.ecommerce.user.customer.repository.CustomerRepository;
+import com.ecommerce.user.customer.repository.CustomerRepositoryImpl;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-	private final CustomerRepository customerRepository;
+	private final CustomerRepositoryImpl customerRepository;
 	
 	@Autowired
-	public CustomerServiceImpl(CustomerRepository customerRepository) {
+	public CustomerServiceImpl(CustomerRepositoryImpl customerRepository) {
 		this.customerRepository = customerRepository;
 	}
 	
 	@Override
 	public Customer findById(Long id) {
-		return customerRepository.getCustomer(id);
+		return customerRepository.findById(id);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<Customer> findAll() {
-		return customerRepository.getList();
+		return customerRepository.findAll();
 	}
 
 	@Override

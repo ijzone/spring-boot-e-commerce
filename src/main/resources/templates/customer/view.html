@@ -51,7 +51,7 @@
 										  focus:ring-indigo-200 
 										  focus:ring-opacity-50"
 				                    placeholder=""
-				                    th:field="${customer.name}" 
+				                    th:field="${customer.firstName}" 
 				                    th:disabled="${customer.edit eq false ? 'disabled' : false}"
 							/>
 						</label>
@@ -162,7 +162,7 @@
 										  focus:ring-indigo-200 
 										  focus:ring-opacity-50"
 				                    placeholder=""
-				                    th:field="*{name}" 
+				                    th:field="*{firstName}" 
 							/>
 						</label>
 						<label class="block">

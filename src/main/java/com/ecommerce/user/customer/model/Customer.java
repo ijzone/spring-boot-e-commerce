@@ -113,5 +113,14 @@ public class Customer extends User {
 	public void setEditFalse() {
 		super.setEditFalse();
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [getAge()=" + getAge() + ", getCellphone()=" + getCellphone() + ", getCity()=" + getCity()
+				+ ", getEmail()=" + getEmail() + ", getFirstName()=" + getFirstName() + ", getGender()=" + getGender()
+				+ ", getLastName()=" + getLastName() + ", getLevel()=" + getLevel() + ", getPassword()=" + getPassword()
+				+ ", getStreet()=" + getStreet() + ", getTel()=" + getTel() + ", getZip()=" + getZip() + ", isActive()="
+				+ isActive() + ", isEdit()=" + isEdit() + "]";
+	}
 	
 }
