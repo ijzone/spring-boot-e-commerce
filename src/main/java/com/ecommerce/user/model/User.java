@@ -1,5 +1,7 @@
 package com.ecommerce.user.model;
 
+import java.time.ZonedDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,11 @@ public class User {
 	
 	private boolean active;
 	private boolean edit;
+	@Setter
+	private ZonedDateTime regDate;
+	private Long regId;
+	private ZonedDateTime modDate;
+	private Long modId;
 	
 	public User(String firstName, 
 				String lastName, 
@@ -41,7 +48,9 @@ public class User {
 				String password, 
 				User.Level level, 
 				boolean active, 
-				boolean edit) {
+				boolean edit,
+				ZonedDateTime regDate,
+				ZonedDateTime modDate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -56,6 +65,8 @@ public class User {
 		this.level = level;
 		this.active = active;
 		this.edit = edit;
+		this.regDate = regDate;
+		this.modDate = modDate;
 	}
 	
 	protected void setActiveTrue() {

@@ -6,6 +6,8 @@ import com.ecommerce.user.customer.model.Customer;
 
 public interface CustomerService {
 
+	Customer save(Customer customer);
+	
 	Customer findById(Long id);
 	
 	Customer findByName(String name);

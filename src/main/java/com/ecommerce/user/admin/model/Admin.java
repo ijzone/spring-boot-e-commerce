@@ -1,5 +1,7 @@
 package com.ecommerce.user.admin.model;
 
+import java.time.ZonedDateTime;
+
 import com.ecommerce.user.model.User;
 
 import lombok.Getter;
@@ -20,8 +22,10 @@ public class Admin extends User {
 				 String password, 
 				 User.Level level, 
 				 boolean active, 
-				 boolean edit) {
-		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active, edit);
+				 boolean edit,
+				 ZonedDateTime regDate,
+				 ZonedDateTime modDate) {
+		super(firstName, lastName, age, gender, cellphone, tel, email, street, city, zip, password, level, active, edit, regDate, modDate);
 	}
 
 	@Override

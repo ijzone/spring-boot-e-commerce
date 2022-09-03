@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepositoryImpl;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -16,6 +19,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	public CustomerServiceImpl(CustomerRepositoryImpl customerRepository) {
 		this.customerRepository = customerRepository;
+	}
+
+	@Override
+	public Customer save(Customer customer) {
+		log.info(customer.toString());
+		customer = customerRepository.save(customer);
+		return customer;
 	}
 	
 	@Override
@@ -42,5 +52,6 @@ public class CustomerServiceImpl implements CustomerService {
 	public boolean deactivateUser() {
 		return false;
 	}
+
 
 }
