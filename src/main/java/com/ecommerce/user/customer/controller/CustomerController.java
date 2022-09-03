@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ecommerce.user.customer.model.Customer;
 import com.ecommerce.user.customer.repository.CustomerRepository;
@@ -46,17 +48,29 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/sign-up")
-	public String signUp(@ModelAttribute Customer customer) {
-		log.info(customer.toString());
-		Customer save = customerService.save(customer);
-		return "";
+	public String signUp(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+		Customer savedCustomer = customerService.save(customer);
+		redirectAttributes.addAttribute("id", savedCustomer.getId());
+		
+		return "redirect:/customer/{id}";
 	}
 	
-	@GetMapping(value = "/{id}")
-	public String customer(Model model) {
-		Customer customer = customerService.findById(1L);
+	@GetMapping("/{id}")
+	public String customer(Model model, @PathVariable Long id, @RequestParam(defaultValue = "false", name = "edit") Boolean edit) {
+		Customer customer = customerService.findById(id);
+		if(edit == true) {
+			customer.setEditTrue();
+		}
 		model.addAttribute("customer", customer);
 		
 		return "/customer/view";
+	}
+	
+	@PostMapping("/{id}")
+	public String customer(Model model, @PathVariable Long id, @ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
+		customerService.update(customer);
+		redirectAttributes.addAttribute("id", id);
+		
+		return "redirect:/customer/{id}";
 	}
 }

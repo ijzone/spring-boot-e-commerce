@@ -31,6 +31,7 @@ public class User {
 	private boolean edit;
 	@Setter
 	private ZonedDateTime regDate;
+	@Setter
 	private Long regId;
 	private ZonedDateTime modDate;
 	private Long modId;

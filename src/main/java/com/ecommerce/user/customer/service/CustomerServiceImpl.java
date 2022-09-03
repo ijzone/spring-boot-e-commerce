@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public CustomerServiceImpl(CustomerRepositoryImpl customerRepository) {
 		this.customerRepository = customerRepository;
 	}
-
+	
 	@Override
 	public Customer save(Customer customer) {
 		log.info(customer.toString());
@@ -53,5 +53,9 @@ public class CustomerServiceImpl implements CustomerService {
 		return false;
 	}
 
+	@Override
+	public void update(Customer customer) {
+		customerRepository.update(customer);
+	}
 
 }

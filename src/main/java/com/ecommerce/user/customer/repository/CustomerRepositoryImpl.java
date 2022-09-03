@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.ecommerce.user.customer.model.Customer;
@@ -51,7 +52,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 //						customer.getStreet(), customer.getCity(), customer.getZip(), customer.getPassword(), 
 //						customer.getLevel().toString(), customer.isActive(), customer.isEdit());
 		
-		jdbcInsert.execute(new BeanPropertySqlParameterSource(customer));
+		KeyHolder executeAndReturnKeyHolder = jdbcInsert.executeAndReturnKeyHolder(new BeanPropertySqlParameterSource(customer));
+		Iterator<Map<String, Object>> iterator = executeAndReturnKeyHolder.getKeyList().iterator();
+		Map<String, Object> map = new HashMap<>();
+		while(iterator.hasNext()) {
+			map.putAll(iterator.next());
+		}
+		customer.setId((Long)map.get("ID"));
+		customer.setRegId((Long)map.get("REG_ID"));
+		log.info("Customer ID: {}", customer.getId());
+		log.info("Customer REG_ID: {}", customer.getRegId());
 		
 		return customer;
 	}
@@ -69,7 +79,22 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 	
 	@Override
-	public void update(Long id) {
+	public void update(Customer customer) {
+		String sql = "update customer set first_name=?, last_name=?, age=?, gender=?, cellphone=?, tel=?, email=?, street=?, city=?, zip=?, mod_id=?, mod_date=current_timestamp where id=?";
+		template.update(sql, 
+						customer.getFirstName(), 
+						customer.getLastName(), 
+						customer.getAge(), 
+						customer.getGender(), 
+						customer.getCellphone(), 
+						customer.getTel(), 
+						customer.getEmail(), 
+						customer.getStreet(), 
+						customer.getCity(), 
+						customer.getZip(), 
+						customer.getId(),
+						customer.getId()
+						);
 	}
 	
 	@Override
@@ -78,7 +103,23 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	
 	private RowMapper<Customer> customerRowMapper() {
 		return (rs, rowNum) -> {
-			Customer customer = new Customer(rs.getString("first_name"), rs.getString("last_name"), rs.getInt("age"), rs.getString("gender").charAt(0), null, null, null, null, null, null, null, User.Level.valueOf(rs.getString("level")), false, false, null, null);
+			Customer customer = new Customer(rs.getString("first_name"), 
+											 rs.getString("last_name"), 
+											 rs.getInt("age"), 
+											 rs.getString("gender").charAt(0), 
+											 rs.getString("cellphone"), 
+											 rs.getString("tel"), 
+											 rs.getString("email"), 
+											 rs.getString("street"), 
+											 rs.getString("city"), 
+											 rs.getString("zip"), 
+											 rs.getString("password"), 
+											 User.Level.valueOf(rs.getString("level")), 
+											 rs.getBoolean("active"), 
+											 rs.getBoolean("edit"), 
+											 null, 
+											 null);
+			customer.setId(rs.getLong("id"));
 			return customer;
 		};
 	}

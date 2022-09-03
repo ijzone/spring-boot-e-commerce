@@ -29,6 +29,11 @@ public class Customer extends User {
 	}
 
 	@Override
+	public Long getId() {
+		return super.getId();
+	}
+
+	@Override
 	public Integer getAge() {
 		return super.getAge();
 	}
@@ -120,11 +125,12 @@ public class Customer extends User {
 
 	@Override
 	public String toString() {
-		return "Customer [getAge()=" + getAge() + ", getCellphone()=" + getCellphone() + ", getCity()=" + getCity()
-				+ ", getEmail()=" + getEmail() + ", getFirstName()=" + getFirstName() + ", getGender()=" + getGender()
-				+ ", getLastName()=" + getLastName() + ", getLevel()=" + getLevel() + ", getPassword()=" + getPassword()
-				+ ", getStreet()=" + getStreet() + ", getTel()=" + getTel() + ", getZip()=" + getZip() + ", isActive()="
-				+ isActive() + ", isEdit()=" + isEdit() + "]";
+		return "Customer [getId()=" + getId() + ", getAge()=" + getAge() + ", getCellphone()=" + getCellphone()
+				+ ", getCity()=" + getCity() + ", getEmail()=" + getEmail() + ", getFirstName()=" + getFirstName()
+				+ ", getGender()=" + getGender() + ", getLastName()=" + getLastName() + ", getLevel()=" + getLevel()
+				+ ", getPassword()=" + getPassword() + ", getStreet()=" + getStreet() + ", getTel()=" + getTel()
+				+ ", getZip()=" + getZip() + ", isActive()=" + isActive() + ", isEdit()=" + isEdit() + "]";
 	}
+
 	
 }

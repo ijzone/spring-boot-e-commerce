@@ -17,4 +17,6 @@ public interface CustomerService {
 	boolean activateUser();
 	
 	boolean deactivateUser();
+	
+	void update(Customer customer);
 }
