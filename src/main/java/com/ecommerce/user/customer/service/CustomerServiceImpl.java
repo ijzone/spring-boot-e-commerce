@@ -58,4 +58,9 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.update(customer);
 	}
 
+	@Override
+	public void deleteAll() {
+		customerRepository.deleteAll();
+	}
+
 }

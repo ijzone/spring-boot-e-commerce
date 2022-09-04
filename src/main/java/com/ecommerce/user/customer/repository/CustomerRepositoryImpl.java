@@ -98,7 +98,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 	
 	@Override
-	public void delete(Long id) {
+	public void deleteAll() {
+		String sql = "delete from customer";
+		int update = template.update(sql);
+		log.info("update rows: {}", update);
 	}
 	
 	private RowMapper<Customer> customerRowMapper() {
