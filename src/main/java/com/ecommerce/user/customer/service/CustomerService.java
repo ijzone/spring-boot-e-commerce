@@ -21,4 +21,6 @@ public interface CustomerService {
 	void update(Customer customer);
 	
 	void deleteAll();
+	
+	void delete(Long id);
 }
